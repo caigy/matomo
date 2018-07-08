@@ -52,6 +52,8 @@ describe("Live", function () {
             $('.visitor-profile-toggle-actions').click();
         });
 
+        await page.mouse.move(0, 0);
+
         const dialog = await page.$('.ui-dialog');
         expect(await dialog.screenshot()).to.matchImage('visitor_profile_actions_hidden');
     });
@@ -73,7 +75,7 @@ describe("Live", function () {
     });
 
     it('should show action tooltip', async function() {
-        action = page.jQuery('.visitor-profile-visits li:first-child .visitor-profile-actions .action:first-child');
+        action = await page.jQuery('.visitor-profile-visits li:first-child .visitor-profile-actions .action:first-child');
         await action.hover();
 
         const tooltip = await page.$('.ui-tooltip');
