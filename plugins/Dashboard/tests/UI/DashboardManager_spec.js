@@ -83,6 +83,7 @@ describe("DashboardManager", function () {
         button = await page.jQuery('.modal.open .modal-footer a:contains(Yes)');
         await button.click();
 
+        await page.waitFor(500);
         await page.waitForNetworkIdle();
 
         /*await page.mouseMove('.dashboard-manager');
