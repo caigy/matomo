@@ -46,6 +46,11 @@ class ReportWidgetFactory
     public function createWidget()
     {
         $widget = new ReportWidgetConfig();
+
+        if (empty($this->report)) {
+            throw new \Exception('Trying to create a widget without a report is not possible');
+        }
+
         $widget->setName($this->report->getName());
         $widget->setCategoryId($this->report->getCategoryId());
 
