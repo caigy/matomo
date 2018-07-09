@@ -176,12 +176,14 @@ describe("Installation", function () {
 
     it("should display the congratulations page when next is clicked on the javascript tracking page", async function() {
         await page.click('.next-step .btn');
+        await page.waitForNetworkIdle();
 
         expect(await page.screenshot({ fullPage: true })).to.matchImage('congrats');
     });
 
     it("should continue to piwik after submitting on the privacy settings form in the congrats page", async function() {
         await page.click('.btn');
+        await page.waitForNetworkIdle();
 
         // check login form is displayed
         await page.waitForSelector('.loginForm');
