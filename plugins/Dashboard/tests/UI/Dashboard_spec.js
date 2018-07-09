@@ -143,6 +143,8 @@ describe("Dashboard", function () {
         await pages.hover();
         await pages.click();
 
+        await page.waitForNetworkIdle();
+
         expect(await page.screenshot({ fullPage: true })).to.matchImage('widget_add_widget');
     });
 
