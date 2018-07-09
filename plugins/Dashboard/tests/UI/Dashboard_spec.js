@@ -52,8 +52,8 @@ describe("Dashboard", function () {
             []
         ];
 
-        await testEnvironment.callController("Dashboard.saveLayout", {name: 'D4', layout: JSON.stringify(layout), idDashboard: 5, idSite: 2});
-        await testEnvironment.callController("Dashboard.saveLayoutAsDefault", {layout: 0});
+        await testEnvironment.callController("Dashboard.saveLayout", {name: 'D4', layout: JSON.stringify(layout), idDashboard: 5, idSite: 2, token_auth: '9ad1de7f8b329ab919d854c556f860c1'});
+        await testEnvironment.callController("Dashboard.saveLayoutAsDefault", {layout: 0, token_auth: '9ad1de7f8b329ab919d854c556f860c1'});
         await removeAllExtraDashboards();
     };
 
