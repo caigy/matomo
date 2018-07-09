@@ -149,16 +149,17 @@ describe("Dashboard", function () {
     });
 
     it("should open row evolution", async function() {
+console.log(0);
         await page.waitForFunction('$("#widgetActionsgetPageUrls table.dataTable tbody tr:contains(thankyou) td:first-child").length > 0');
         const row = await page.jQuery('#widgetActionsgetPageUrls table.dataTable tbody tr:contains(thankyou) td:first-child');
         await row.hover();
-
+console.log(1);
         const icon = await page.waitForSelector('#widgetActionsgetPageUrls table.dataTable tbody a.actionRowEvolution');
         await icon.click();
-
+console.log(2);
         await page.waitForSelector('.ui-dialog');
         await page.waitForNetworkIdle();
-
+console.log(3);
         const dialog = await page.$('.ui-dialog');
         expect(await dialog.screenshot()).to.matchImage('rowevolution');
     });
