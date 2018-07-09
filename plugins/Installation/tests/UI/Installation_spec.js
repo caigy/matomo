@@ -57,6 +57,7 @@ describe("Installation", function () {
 
     it("should display the system check page when next is clicked on the first page", async function() {
         await page.click('.next-step .btn');
+        await page.waitForNetworkIdle();
 
         expect(await page.screenshot({ fullPage: true })).to.matchImage('system_check');
     });
@@ -76,12 +77,14 @@ describe("Installation", function () {
         await page.goto(pageUrl);
 
         page.click('.next-step .btn');
+        await page.waitForNetworkIdle();
 
         expect(await page.screenshot({ fullPage: true })).to.matchImage('db_setup');
     });
 
     it("should fail when the next button is clicked and no database info is entered in the form", async function() {
         await page.click('.btn');
+        await page.waitForNetworkIdle();
 
         expect(await page.screenshot({ fullPage: true })).to.matchImage('db_setup_fail');
     });
@@ -99,12 +102,14 @@ describe("Installation", function () {
 
         await page.type('input[name="dbname"]', 'newdb');
         await page.click('.btn');
+        await page.waitForNetworkIdle();
 
         expect(await page.screenshot({ fullPage: true })).to.matchImage('db_created');
     });
 
     it("should display the superuser configuration page when next is clicked on the tables created page", async function() {
         await page.click('.next-step .btn');
+        await page.waitForNetworkIdle();
 
         expect(await page.screenshot({ fullPage: true })).to.matchImage('superuser');
     });
@@ -113,8 +118,8 @@ describe("Installation", function () {
 
     it("should un-select Professional Services newsletter checkbox when language is German", async function() {
         pageUrl = page.url();
-        pageUrlDe = pageUrl + '&language=de'
-        await page.await(pageUrlDe);
+        pageUrlDe = pageUrl + '&language=de';
+        await page.goto(pageUrlDe);
 
         expect(await page.screenshot({ fullPage: true })).to.matchImage('superuser_de');
     });
@@ -122,6 +127,7 @@ describe("Installation", function () {
     it("should fail when incorrect information is entered in the superuser configuration page", async function() {
         await page.goto(pageUrl);
         await page.click('.btn');
+        await page.waitForNetworkIdle();
 
         expect(await page.screenshot({ fullPage: true })).to.matchImage('superuser_fail');
     });
@@ -139,6 +145,7 @@ describe("Installation", function () {
 
     it("should should fail when incorrect information is entered in the setup a website page", async function() {
         await page.click('.btn');
+        await page.waitForNetworkIdle();
 
         expect(await page.screenshot({ fullPage: true })).to.matchImage('setup_website_fail');
     });
