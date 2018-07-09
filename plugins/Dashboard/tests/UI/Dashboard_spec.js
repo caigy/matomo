@@ -149,9 +149,8 @@ describe("Dashboard", function () {
     });
 
     it("should open row evolution", async function() {
-        await page.waitForFunction('$("#widgetActionsgetPageUrls table.dataTable tbody tr:contains(thankyou) td:first-child").length > 0');
-        var row = await page.jQuery('#widgetActionsgetPageUrls table.dataTable tbody tr:contains(thankyou) td:first-child');
-        console.log(row);
+        await page.waitForFunction('$("#widgetActionsgetPageUrls table.dataTable tbody tr:eq(7) td:first-child").length > 0');
+        var row = await page.jQuery('#widgetActionsgetPageUrls table.dataTable tbody tr:eq(7) td:first-child');
         await row.hover();
 console.log(1);
         const icon = await page.waitForSelector('#widgetActionsgetPageUrls table.dataTable tbody a.actionRowEvolution');
