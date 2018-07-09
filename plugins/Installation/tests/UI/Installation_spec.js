@@ -117,7 +117,7 @@ describe("Installation", function () {
     var pageUrl, pageUrlDe;
 
     it("should un-select Professional Services newsletter checkbox when language is German", async function() {
-        pageUrl = page.url();
+        pageUrl = await page.url();
         pageUrlDe = pageUrl + '&language=de';
         await page.goto(pageUrlDe);
 
